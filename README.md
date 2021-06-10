@@ -4,7 +4,7 @@ This repo contains the Atritec Potree Demo. As some things we want to do require
 
 # To run:
 
-```npm install && npm build```
+```npm install && npm run build```
 
 Then build and run the docker image.
 
