@@ -46,8 +46,6 @@
 		viewer.setFOV(60);
 		viewer.setPointBudget(1_000_000);
 		viewer.loadSettingsFromURL();
-
-		viewer.setControls(viewer.earthControls)
 		
 		viewer.setDescription("Driftplats");
 		
@@ -90,15 +88,15 @@
 
 			for (var i = 60; i <= 140; i += 20) {
 				let profile = new Potree.Measure();
-				profile.addMarker(new THREE.Vector3(i, ymid - 1.5, zrail));
-				profile.addMarker(new THREE.Vector3(i, ymid - 2.0, zrail + 0.5));
-				profile.addMarker(new THREE.Vector3(i, ymid - 2.0, zrail + 5));
-				profile.addMarker(new THREE.Vector3(i, ymid - 1.5, zrail + 5.5));
-				profile.addMarker(new THREE.Vector3(i, ymid + 1.5, zrail + 5.5));
-				profile.addMarker(new THREE.Vector3(i, ymid + 2.0, zrail + 5));
-				profile.addMarker(new THREE.Vector3(i, ymid + 2.0, zrail + 0.5));
-				profile.addMarker(new THREE.Vector3(i, ymid + 1.5, zrail));
-				profile.addMarker(new THREE.Vector3(i, ymid - 1.5, zrail));
+				profile.addMarker(new THREE.Vector3(i, ymid - 2.0, zrail));
+				profile.addMarker(new THREE.Vector3(i, ymid - 2.5, zrail + 0.5));
+				profile.addMarker(new THREE.Vector3(i, ymid - 2.5, zrail + 5));
+				profile.addMarker(new THREE.Vector3(i, ymid - 2.0, zrail + 5.5));
+				profile.addMarker(new THREE.Vector3(i, ymid + 2.0, zrail + 5.5));
+				profile.addMarker(new THREE.Vector3(i, ymid + 2.5, zrail + 5));
+				profile.addMarker(new THREE.Vector3(i, ymid + 2.5, zrail + 0.5));
+				profile.addMarker(new THREE.Vector3(i, ymid + 2.0, zrail));
+				profile.addMarker(new THREE.Vector3(i, ymid - 2.0, zrail));
 				profile.showCircle = false;
 				profile.showDistances = false;
 				profile.showAzimuth = true;
