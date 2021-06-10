@@ -169,7 +169,7 @@ function createLine(){
 		dashed: true,
 	});
 
-	material.depthTest = false;
+	material.depthTest = true;
 
 	const line = new Line2(geometry, material);
 
@@ -214,7 +214,7 @@ function createCircle(){
 		resolution:  new THREE.Vector2(1000, 1000),
 	});
 
-	material.depthTest = false;
+	material.depthTest = true;
 
 	const line = new Line2(geometry, material);
 	line.computeLineDistances();
@@ -335,7 +335,7 @@ export class Measure extends THREE.Object3D {
 		let sphereMaterial = new THREE.MeshLambertMaterial({
 			//shading: THREE.SmoothShading,
 			color: this.color,
-			depthTest: false,
+			depthTest: true,
 			depthWrite: false}
 		);
 
@@ -369,7 +369,7 @@ export class Measure extends THREE.Object3D {
 				resolution:  new THREE.Vector2(1000, 1000),
 			});
 
-			lineMaterial.depthTest = false;
+			lineMaterial.depthTest = true;
 
 			let edge = new Line2(lineGeometry, lineMaterial);
 			edge.visible = true;

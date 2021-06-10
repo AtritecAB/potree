@@ -47,7 +47,7 @@
 		viewer.setPointBudget(1_000_000);
 		viewer.loadSettingsFromURL();
 		
-		viewer.setDescription("Driftplats");
+		viewer.setDescription("Plattform");
 		
 		viewer.loadGUI(() => {
 			viewer.setLanguage('en');
@@ -56,17 +56,17 @@
 		});
 		
 		// Sigeom
-		Potree.loadPointCloud("../pointclouds/target/cloud.js", "driftplats", function(e){
+		Potree.loadPointCloud("../pointclouds/platform/cloud.js", "plattform", function(e){
 			viewer.scene.addPointCloud(e.pointcloud);
 
-			let zrail = 2.66;//-216693.21217094766;
+			let zrail = -1.35;
 
 			// Left rail
-			var rLeftY = -3.76;//-299851.77212868794;
+			var rLeftY = -0.7;
 			var rLeftZ = zrail;
 
 			// Right rail
-			var rRightY = -2.26;//-299850.21439429384;
+			var rRightY = 0.7;
 			var rRightZ = zrail;
 
 			let ymid = (rLeftY + rRightY) / 2.0;
@@ -80,23 +80,23 @@
 
 			let rRight = new Potree.Measure();
 			rRight.addMarker(new THREE.Vector3(0, rRightY, rRightZ));
-			rRight.addMarker(new THREE.Vector3(500, rRightY, rRightZ));
+			rRight.addMarker(new THREE.Vector3(720, rRightY, rRightZ));
 			rRight.showCircle = false;
 			rRight.showdistances = false;
 			viewer.scene.addMeasurement(rRight);
 
 
-			for (var i = 60; i <= 140; i += 20) {
+			for (var i = 20; i <= 700; i += 20) {
 				let profile = new Potree.Measure();
-				profile.addMarker(new THREE.Vector3(i, ymid - 2.0, zrail));
-				profile.addMarker(new THREE.Vector3(i, ymid - 2.5, zrail + 0.5));
-				profile.addMarker(new THREE.Vector3(i, ymid - 2.5, zrail + 5));
-				profile.addMarker(new THREE.Vector3(i, ymid - 2.0, zrail + 5.5));
-				profile.addMarker(new THREE.Vector3(i, ymid + 2.0, zrail + 5.5));
-				profile.addMarker(new THREE.Vector3(i, ymid + 2.5, zrail + 5));
-				profile.addMarker(new THREE.Vector3(i, ymid + 2.5, zrail + 0.5));
-				profile.addMarker(new THREE.Vector3(i, ymid + 2.0, zrail));
-				profile.addMarker(new THREE.Vector3(i, ymid - 2.0, zrail));
+				profile.addMarker(new THREE.Vector3(i, ymid - 2.0, zrail + 0.5));
+				profile.addMarker(new THREE.Vector3(i, ymid - 2.5, zrail + 1.0));
+				profile.addMarker(new THREE.Vector3(i, ymid - 2.5, zrail + 4.9));
+				profile.addMarker(new THREE.Vector3(i, ymid - 2.0, zrail + 5.4));
+				profile.addMarker(new THREE.Vector3(i, ymid + 2.0, zrail + 5.4));
+				profile.addMarker(new THREE.Vector3(i, ymid + 2.5, zrail + 4.9));
+				profile.addMarker(new THREE.Vector3(i, ymid + 2.5, zrail + 1.0));
+				profile.addMarker(new THREE.Vector3(i, ymid + 2.0, zrail + 0.5));
+				profile.addMarker(new THREE.Vector3(i, ymid - 2.0, zrail + 0.5));
 				profile.showCircle = false;
 				profile.showDistances = false;
 				profile.showAzimuth = true;
@@ -106,11 +106,10 @@
 			let material = e.pointcloud.material;
 			material.size = 0.5;
 			material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
-			//material.pointColorType = Potree.PointColorType.INTENSITY;
-			
-			e.pointcloud.position.x += 3;
-			e.pointcloud.position.y -= 3;
-			e.pointcloud.position.z += 4;
+			//material.pointColorType = Potree.PointColorType.COMPOSITE;
+			material.activeAttributeName = "composite";
+			material.weightIntensity = 0.8;
+			material.weightClassification = 0.8;
 			
 			viewer.fitToScreen();
 		});
